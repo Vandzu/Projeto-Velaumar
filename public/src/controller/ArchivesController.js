@@ -1,4 +1,4 @@
-class DropBoxController {
+class DoacaoController {
   constructor() {
 
     this.currentFolder = ['Velaumar'];
