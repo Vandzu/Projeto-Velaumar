@@ -4,6 +4,8 @@ Nome dos integrantes: Francisco Gabriel, Maria Gabriela, Vanderson Lima, Thays L
 Descrição do projeto:
 O site a ser desenvolvido para a ONG Velaumar visa incorporar a sua visibilidade no meio digital, de uma forma que os Administradores da página terão controle para gerenciar as ações sociais, eventos, notícias, doações e documentos produzidos pela ong. Além de trazer para o usuário um ambiente que contenha a personalidade da instituição, sensibilizando-o a poder contribuir de alguma maneira para que mais pessoas sejam alcançadas por suas ações.
 
+Obs: o arquivo executável(.exe) está localizado dentro da pasta bin. Após executar o arquivo, para acessar a aplicação basta abrir o navegador, digita 'localhost:3000' e pressionar enter.
+
 
 Requisito Funcional | Descrição | Codificação
 --- | --- | --- 
