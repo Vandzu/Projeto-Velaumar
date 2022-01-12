@@ -1,4 +1,4 @@
-class DoacaoController {
+class ArchivesController {
   constructor() {
 
     this.currentFolder = ['Velaumar'];
@@ -17,11 +17,16 @@ class DoacaoController {
     this.btnNewFolder = document.querySelector("#btn-new-folder");
     this.btnRename = document.querySelector("#btn-rename");
     this.btnDelete = document.querySelector("#btn-delete");
+    this.btnCancelUpload = document.querySelector("#btn-cancel-upload");
+    this.toastCancelUpload = document.querySelector("#cancel-upload-toast");
 
     this.connectFirebase();
+    this.storage = firebase.storage();
+    this.storageRef = this.storage.ref();
     this.initEvents();
 
-    this.openFolder()
+    this.openFolder();
+    this.cancelUpload();
   }
 
   connectFirebase() {
@@ -123,9 +128,7 @@ class DoacaoController {
 
   removeFile(ref, name) {
     let fileRef = firebase.storage().ref(ref).child(name);
-
     return fileRef.delete();
-      
   }
 
   initEvents() {
@@ -163,13 +166,25 @@ class DoacaoController {
     this.btnRename.addEventListener("click", (e) => {
       let li = this.getSelection()[0];
       let file = JSON.parse(li.dataset.file);
-
       let name = prompt("Renomear o arquivo:", file.name);
 
       if (name) {
+        let firstName = file.name;
         file.name = name;
+        let fileRef = firebase.storage().ref(this.currentFolder.join('/')).child(file.name);
+        let getRef = this.getFirebaseRef();
+        let lidatakey = li.getAttribute('data-key');
 
-        this.getFirebaseRef().child(li.dataset.key).set(file);
+        getRef.child(lidatakey).remove();
+
+        this.getFirebaseRef().push().set({
+          name: file.name,
+          originName: firstName,
+          type: file.type,
+          path: file.path,
+          size: file.size
+        });
+        
       }
     });
 
@@ -202,6 +217,7 @@ class DoacaoController {
           responses.forEach((resp) => {
             this.getFirebaseRef().push().set({
               name: resp.name,
+              originName: resp.name,
               type: resp.contentType,
               path: resp.downloadURLs[0],
               size: resp.size
@@ -268,6 +284,17 @@ class DoacaoController {
     });
   }
 
+  cancelUpload(){
+    this.btnCancelUpload.addEventListener('click', e=>{
+      e.preventDefault();
+      this.modalShow(false);
+      this.inputFilesEl.value = "";
+      this.btnSendFileEl.disabled = false;
+      $('#cancel-upload-toast').toast('show');
+      console.log("arquivo cancelado");
+    });
+  }
+
   uploadTask(files) {
     let promises = [];
 
@@ -276,6 +303,8 @@ class DoacaoController {
         let fileRef = firebase.storage().ref(this.currentFolder.join('/')).child(file.name);
       
         let task = fileRef.put(file);
+
+        this.startUploadTime = Date.now();
   
         task.on('state_changed', snapshot => {
           this.uploadProgress({
@@ -502,10 +531,11 @@ class DoacaoController {
 
     li.dataset.key = key;
     li.dataset.file = JSON.stringify(file);
-
+    li.className = "col-xl-3 col-lg-4 col-md-6 col-sm-6 text-center"
+    li.setAttribute("name", file.name);
     li.innerHTML = `
       ${this.getFileIconView(file)}
-      <div class="name text-center">${file.name}</div>
+      <p class="name text-center">${file.name}</p>
     `;
     this.initEventsLi(li);
 
@@ -518,6 +548,7 @@ class DoacaoController {
 
     this.getFirebaseRef().on("value", (snapshot) => {
       this.listFilesEl.innerHTML = "";
+      
       snapshot.forEach((snapshotItem) => {
         let key = snapshotItem.key;
         let data = snapshotItem.val();

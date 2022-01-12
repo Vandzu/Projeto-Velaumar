@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+
+    <title>Projeto Velaumar</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Font Awesome JS -->
+    <link href="assets/css/adminDocs.css" rel="stylesheet">
+    <link href="assets/css/sidebar.css" rel="stylesheet">
+      
+
+</head>
+
+<body id="body-pd">
+    <%- include("inc/sidebar")-%>
+    <div class="container-fluid">
+        <div class="row">
+            <main role="main" class="col-xl-12 pt-3 px-4">
+                
+                <header class="maestro-header page-header__shadow">
+                    <div class="page-header">
+                        <div class="page-header__title page-header__title-overflow" tabindex="0">
+                            <span class="ue-effect-container uee-PageletMaestroHeader-Title">
+                                <span>
+                                    <h1 class="ax-visually-hidden">Meus Arquivos</h1>
+                                    <nav class="page-header-text u-l-fl" id="browse-location" aria-label="Hierarquia de pastas" role="navigation">
+                                        <span class="breadcrumb-segment__wrapper">
+                                            <span class="ue-effect-container uee-BreadCrumbSegment-link-0">
+                                                <a href="https://www.dropbox.com/work" class="breadcrumb-segment">Velaumar</a>
+                                            </span>
+                                            <svg width="24" height="24" viewBox="0 0 24 24" class="mc-icon-template-stateless" style="position: relative;">
+                                                <title>arrow-right</title>
+                                                <path d="M10.414 7.05l4.95 4.95-4.95 4.95L9 15.534 12.536 12 9 8.464z" fill="#637282"
+                                                    fill-rule="evenodd"></path>
+                                            </svg>
+                                        </span>
+                                        <span>Avell</span>
+                                    </nav>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="top-menu-container ">
+                            <div class="search-bar--container u-l-fr">
+                                <div class="is-collapsed search-bar">
+                                    <form class="search-bar__input">
+                                        <button aria-label="Buscar" class="search-bar__button" type="submit">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" class="mc-icon-template-selectable">
+                                                <title>Artboard</title>
+                                                <defs>
+                                                    <circle id="mc-global-search-small-a" cx="5" cy="5" r="5"></circle>
+                                                </defs>
+                                                <g fill="none" fill-rule="evenodd">
+                                                    <path d="M15 15l3 3" stroke="#637282" stroke-width="2" stroke-linecap="round"></path>
+                                                    <g transform="translate(7 7)">
+                                                        <mask id="mc-global-search-small-b" fill="#fff">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#mc-global-search-small-a"></use>
+                                                        </mask>
+                                                        <circle stroke="#637282" stroke-width="4" mask="url(#mc-global-search-small-b)" cx="5"
+                                                            cy="5" r="5"></circle>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                        </button>
+                                        <input aria-activedescendant="search-dropdown-suggestion0" aria-autocomplete="list" aria-expanded="false"
+                                            aria-label="Buscar" aria-owns="search-bar__suggestions" class="search-bar__text-input" placeholder="Buscar"
+                                            role="combobox" value="" tabindex="1">
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="top-menu-container--search-bar-empty-space"></div>
+                        </div>
+                    </div>
+                </header>
+
+                <section id="content-section">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <ul class="list-unstyled row" id="list-of-files-and-directories"></ul>
+                        </div>
+                        <div class="col-md-3 right-buttons">
+                            <button id="btn-send-file" type="button" class="btn btn-primary btn-block btn-sm row mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-plus" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5z"/>
+                                    <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"/>
+                                  </svg>
+                                Enviar arquivos
+                                <input type="file" id="files" style="display:none;" multiple>
+                            </button>
+                            
+                            <button id="btn-new-folder" type="button" class="btn btn-secondary btn-block btn-sm row mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-plus" viewBox="0 0 16 16">
+                                    <path d="m.5 3 .04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2zm5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19c-.24 0-.47.042-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672z"/>
+                                    <path d="M13.5 10a.5.5 0 0 1 .5.5V12h1.5a.5.5 0 1 1 0 1H14v1.5a.5.5 0 1 1-1 0V13h-1.5a.5.5 0 0 1 0-1H13v-1.5a.5.5 0 0 1 .5-.5z"/>
+                                  </svg>
+                                Nova Pasta
+                            </button>
+                            <button style="display: none;" id="btn-rename" type="button" class="btn btn-info btn-block btn-sm row mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                  </svg>
+                                Renomear
+                            </button>
+                            <button style="display: none;" id="btn-delete" type="button" class="btn btn-danger btn-block btn-sm row mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-minus" viewBox="0 0 16 16">
+                                    <path d="M5.5 9a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/>
+                                    <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+                                  </svg>
+                                Excluir
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <div id="react-snackbar-root" style="display:none">
+        <div data-reactroot="" class="mc-snackbar-holder-backdrop">
+            <div class="mc-snackbar">
+                <div class="mc-snackbar-container mc-snackbar-container--snackbar-icon">
+                    <div class="mc-snackbar-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" class="mc-icon-template-status mc-icon-template-status-rotating">
+                            <title>Status: Syncing</title>
+                            <path d="M16 24a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm0-3a5 5 0 0 0 3.467-8.602l-.57.844A4 4 0 0 1 16 20l.001-1.5-2.5 2 2.5 2V21zm0-10a5 5 0 0 0-3.667 8.399l.578-.858A4 4 0 0 1 16 12v1.5l2.5-2-2.5-2V11z"
+                                fill="#0070E0" fill-rule="nonzero"></path>
+                        </svg>
+                    </div>
+                    <p class="mc-snackbar-title">Enviando o arquivo <span class="filename">file.pdf</span> - <span class="timeleft">8 min</span> restantes</p>
+                    <button type="button" id="btn-cancel-upload">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                          </svg>
+                    </button>
+                </div>
+                <div class="mc-progress-bar-bg">
+                    <div class="mc-progress-bar-fg" style="width: 0%;"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center" style="min-height: 200px;">
+        <div class="toast" id="cancel-upload-toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <strong class="mr-auto">Aviso</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="toast-body">
+            O envio do arquivo foi cancelado
+          </div>
+        </div>
+      </div>
+
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script src="src/controller/ArchivesController.js"></script>
+    <script src="src/index.js" ></script>
+    <script src="js/sidebar.js"></script>
+    
+    
+</body>
+
+</html>

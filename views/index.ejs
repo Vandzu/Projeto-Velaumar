@@ -1,150 +1,249 @@
 <!doctype html>
-<html lang="pt-br">
+<html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
 
-    <title>Projeto Velaumar</title>
+  <title>Doação</title>
 
-    <link href="bower_components/Ionicons/css/ionicons.min.css" rel="stylesheet">
-    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/archives-velaumar.css" rel="stylesheet">
-    <style>
-        
-    </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <link href="assets/css/index.css" rel="stylesheet">
+  <link href="assets/css/navbar.css" rel="stylesheet">
+
 </head>
 
 <body>
+  <%- include("inc/navbar")-%>
 
-    <div class="container-fluid">
-        <div class="row">
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-
-                <div class="sidebar-sticky">
-                    <div class="maestro-nav__contents">
-                        <ul class="maestro-nav__features" data-reactid="21">
-                            <li data-reactid="22">
-                                <h2 class="maestro-nav__features-header" data-reactid="23">
-                                    <a href="#" class="maestro-nav__features-header-link" data-reactid="24">Arquivos</a>
-                                </h2>
-                            </li>
-                            <li data-reactid="25">
-                                <div class="maestro-nav__feature-wrap" data-reactid="26">
-                                    <span class="ue-effect-container uee-FeatureNav-myFiles" data-reactid="27">
-                                        <a href="#" class="maestro-nav__feature maestro-nav__active-feature" data-reactid="28">
-                                        Arquivos
-                                        </a>
-                                    </span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-            </nav>
-
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-                
-                <header class="maestro-header page-header__shadow">
-                    <div class="page-header">
-                        <div class="page-header__title page-header__title-overflow" tabindex="0">
-                            <span class="ue-effect-container uee-PageletMaestroHeader-Title">
-                                <span>
-                                    <h1 class="ax-visually-hidden">Meus Arquivos</h1>
-                                    <nav class="page-header-text u-l-fl" id="browse-location" aria-label="Hierarquia de pastas" role="navigation">
-                                        <span class="breadcrumb-segment__wrapper">
-                                            <span class="ue-effect-container uee-BreadCrumbSegment-link-0">
-                                                <a href="https://www.dropbox.com/work" class="breadcrumb-segment">Velaumar</a>
-                                            </span>
-                                            <svg width="24" height="24" viewBox="0 0 24 24" class="mc-icon-template-stateless" style="top: 4px; position: relative;">
-                                                <title>arrow-right</title>
-                                                <path d="M10.414 7.05l4.95 4.95-4.95 4.95L9 15.534 12.536 12 9 8.464z" fill="#637282"
-                                                    fill-rule="evenodd"></path>
-                                            </svg>
-                                        </span>
-                                        <span>Avell</span>
-                                    </nav>
-                                </span>
-                            </span>
-                        </div>
-                        <div class="top-menu-container ">
-                            <div class="search-bar--container u-l-fr">
-                                <div class="is-collapsed search-bar">
-                                    <form class="search-bar__input">
-                                        <button aria-label="Buscar" class="search-bar__button" type="submit">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" class="mc-icon-template-selectable">
-                                                <title>Artboard</title>
-                                                <defs>
-                                                    <circle id="mc-global-search-small-a" cx="5" cy="5" r="5"></circle>
-                                                </defs>
-                                                <g fill="none" fill-rule="evenodd">
-                                                    <path d="M15 15l3 3" stroke="#637282" stroke-width="2" stroke-linecap="round"></path>
-                                                    <g transform="translate(7 7)">
-                                                        <mask id="mc-global-search-small-b" fill="#fff">
-                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#mc-global-search-small-a"></use>
-                                                        </mask>
-                                                        <circle stroke="#637282" stroke-width="4" mask="url(#mc-global-search-small-b)" cx="5"
-                                                            cy="5" r="5"></circle>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                        </button>
-                                        <input aria-activedescendant="search-dropdown-suggestion0" aria-autocomplete="list" aria-expanded="false"
-                                            aria-label="Buscar" aria-owns="search-bar__suggestions" class="search-bar__text-input" placeholder="Buscar"
-                                            role="combobox" value="" tabindex="1">
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="top-menu-container--search-bar-empty-space"></div>
-                        </div>
-                    </div>
-                </header>
-
-                <section id="content-section">
-                    <div class="row">
-                        <div class="col-md-9">
-                            <ul class="list-unstyled" id="list-of-files-and-directories"></ul>
-                        </div>
-                        <div class="col-md-3">
-                            <button id="btn-send-file" type="button" class="btn btn-primary btn-block btn-sm">Enviar arquivos</button>
-                            <input type="file" id="files" style="display:none;" multiple>
-                            <button id="btn-new-folder" type="button" class="btn btn-link btn-block btn-sm btn-icon"><i class="ion-android-folder-open"></i>Nova Pasta</button>
-                            <button style="display: none;" id="btn-rename" type="button" class="btn btn-link btn-block btn-sm btn-icon"><i class="ion-edit"></i>Renomear</button>
-                            <button style="display: none;" id="btn-delete" type="button" class="btn btn-link btn-block btn-sm btn-icon"><i class="ion-trash-a"></i>Excluir</button>
-                        </div>
-                    </div>
-                </section>
-
-            </main>
-        </div>
+    <div class="jumbotron text-center container-inicial">
+      <h1 class="display-4">Seja parte de algo a mais</h1>
+      <p class="lead">Se voluntarie e nos ajude a construir uma Fortaleza mais bela.</p>
+      <p>
+        <a class="botao" href="#">Seja voluntário</a>
+      </p>
+      <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="27.9786" cy="28.0215" r="27.9786" fill="#349A9C" />
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M3.49732 28.0215C3.49732 34.5143 6.07659 40.7412 10.6677 45.3323C15.2588 49.9234 21.4857 52.5027 27.9786 52.5027C34.4714 52.5027 40.6983 49.9234 45.2894 45.3323C49.8805 40.7412 52.4598 34.5143 52.4598 28.0215C52.4598 21.5286 49.8805 15.3017 45.2894 10.7106C40.6983 6.11949 34.4714 3.54023 27.9786 3.54023C21.4857 3.54023 15.2588 6.11949 10.6677 10.7106C6.07659 15.3017 3.49732 21.5286 3.49732 28.0215V28.0215ZM55.9571 28.0215C55.9571 35.4418 53.0094 42.5583 47.7624 47.8053C42.5154 53.0523 35.3989 56 27.9786 56C20.5582 56 13.4417 53.0523 8.19473 47.8053C2.94773 42.5583 0 35.4418 0 28.0215C0 20.6011 2.94773 13.4846 8.19473 8.23764C13.4417 2.99064 20.5582 0.0429077 27.9786 0.0429077C35.3989 0.0429077 42.5154 2.99064 47.7624 8.23764C53.0094 13.4846 55.9571 20.6011 55.9571 28.0215V28.0215ZM29.7272 15.7808C29.7272 15.3171 29.543 14.8723 29.215 14.5444C28.8871 14.2164 28.4423 14.0322 27.9786 14.0322C27.5148 14.0322 27.07 14.2164 26.7421 14.5444C26.4141 14.8723 26.2299 15.3171 26.2299 15.7808V36.0408L18.7246 28.5321C18.3963 28.2037 17.951 28.0193 17.4866 28.0193C17.0222 28.0193 16.5769 28.2037 16.2485 28.5321C15.9202 28.8604 15.7357 29.3058 15.7357 29.7701C15.7357 30.2345 15.9202 30.6798 16.2485 31.0082L26.7405 41.5001C26.9029 41.663 27.0959 41.7922 27.3084 41.8803C27.5208 41.9685 27.7485 42.0139 27.9786 42.0139C28.2086 42.0139 28.4363 41.9685 28.6488 41.8803C28.8612 41.7922 29.0542 41.663 29.2166 41.5001L39.7086 31.0082C40.0369 30.6798 40.2214 30.2345 40.2214 29.7701C40.2214 29.3058 40.0369 28.8604 39.7086 28.5321C39.3802 28.2037 38.9349 28.0193 38.4705 28.0193C38.0062 28.0193 37.5608 28.2037 37.2325 28.5321L29.7272 36.0408V15.7808Z"
+          fill="white" />
+      </svg>
     </div>
 
-    <div id="react-snackbar-root" style="display:none">
-        <div data-reactroot="" class="mc-snackbar-holder-backdrop">
-            <div class="mc-snackbar">
-                <div class="mc-snackbar-container mc-snackbar-container--snackbar-icon">
-                    <div class="mc-snackbar-icon">
-                        <svg width="32" height="32" viewBox="0 0 32 32" class="mc-icon-template-status mc-icon-template-status-rotating">
-                            <title>Status: Syncing</title>
-                            <path d="M16 24a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm0-3a5 5 0 0 0 3.467-8.602l-.57.844A4 4 0 0 1 16 20l.001-1.5-2.5 2 2.5 2V21zm0-10a5 5 0 0 0-3.667 8.399l.578-.858A4 4 0 0 1 16 12v1.5l2.5-2-2.5-2V11z"
-                                fill="#0070E0" fill-rule="nonzero"></path>
-                        </svg>
-                    </div>
-                    <p class="mc-snackbar-title">Enviando o arquivo <span class="filename">file.pdf</span> - <span class="timeleft">8 min</span> restantes</p>
-                </div>
-                <div class="mc-progress-bar-bg">
-                    <div class="mc-progress-bar-fg" style="width: 0%;"></div>
-                </div>
-            </div>
+    <div class="container-padrao container-fluid">
+      <div class="row">
+        <div class="col-xl-6 col-lg-12 text-center sobre">
+          <h1>Sobre a Velaumar</h1>
+          <p>
+            Fundada em 2004 por Dona Rocilda Lima, a ONG VelauMar tem a missão de cuidar e zelar pela vida comunitária
+            em prol da dignidade da Pessoa humana. Responsável por inúmeras ações no Poço da Draga, a ONG Velaumar é o
+            caminho e a ponte para construção de uma Comunidade criativa e participativa. Hoje é gerida por Izabel Lima,
+            Marilac Lima e Junior Pantera. Fundamentais do Poço da Draga Aqui somos todes importantes e únicos no
+            processo de construção do lugar que desejamos viver. É de responsabilidade de toda comunidade e cada ser
+            cuidar do Poço da Draga / Baixa Pau.
+          </p>
+            <a class="botao2" href="/sobre">Saiba mais</a>
         </div>
+        <div class="col-xl-6 col-lg-12 sobre-imgs text-center">
+          <img id="img1" src="images/img 1.png">
+          <img id="img2" src="images/img 2.png">
+        </div>
+      </div>
     </div>
 
-    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
-    <script src="src/controller/ArchivesController.js"></script>
-    <script src="src/index.js" ></script>
+    <div class="waves-container">
+      <div class="waves">
+        <svg width="100%" height="200px" fill="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#A8DCE6" />
+            <stop offset="50%" stop-color="#349A9C" />
+            <stop offset="100%" stop-color="#326466" />
+          </linearGradient>
+          <path fill="url(#grad1)" d="M0 67 C 273,183 822,-40 1920.00,106 V 359 H 0  V 67 Z">
+            <animate repeatCount="indefinite" fill="url(#grad1)" attributeName="d" dur="15s" attributeType="XML"
+              values="M0 77  C 473,283 822,-40 1920,116  V 359 H 0  V 67 Z; M0 77 C 473,-40 1222,283 1920,136  V 359 H 0 V 67 Z; M0 77 C 973,260 1722,-53 1920,120  V 359  H 0  V 67  Z; M0 77 C 473,283 822,-40 1920,116 V 359 H 0 V 67 Z">
+            </animate>
+          </path>
+        </svg>
+      </div>
+    </div>
 
+    <div class="container-fluid container-padrao text-center">
+      <div class="row text-center">
+        <h1>Como fazer parte?</h1>
+      </div>
+      <div class="row passo">
+        <div class="col-md-6 col-lg-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" fill="blue" class="bi bi-pencil-square"
+            viewBox="0 0 16 16">
+            <path
+              d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+            <path fill-rule="evenodd"
+              d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+          </svg>
+          <strong class="row justify-content-center">1º</strong>
+          <p>
+            Clique em “Registrar-se” no início da página, e realize o seu cadastro.
+          </p>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" fill="green" class="bi bi-check2-square"
+            viewBox="0 0 16 16">
+            <path
+              d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z" />
+            <path
+              d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
+          </svg>
+          <strong class="row justify-content-center">2º</strong>
+          <p>
+            Após finalizar o seu registro, selecione a ação que você possui interesse.
+          </p>
+        </div>
+        <div class="col-md-6 col-lg-3 two">
+          <svg class="map" xmlns="http://www.w3.org/2000/svg" width="128" height="128" fill="red"
+            class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
+          </svg>
+          <svg class="clock" xmlns="http://www.w3.org/2000/svg" width="128" height="128" fill="currentColor"
+            class="bi bi-clock" viewBox="0 0 16 16">
+            <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
+          </svg>
+          <strong class="row justify-content-center">3º</strong>
+          <p>
+            Em seguida, você poderá visualizar o horário e o local em que ocorrerá a ação.
+          </p>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" fill="currentColor"
+            class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
+          </svg>
+          <strong class="row justify-content-center">4º</strong>
+          <p>
+            Clique em “Participar”, e pronto, você estará se voluntariando a participar dessa ação!
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="waves-container">
+      <div class="waves">
+        <svg width="100%" height="200px" fill="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#A8DCE6" />
+            <stop offset="50%" stop-color="#349A9C" />
+            <stop offset="100%" stop-color="#326466" />
+          </linearGradient>
+          <path fill="url(#grad1)" d="M0 67 C 273,183 822,-40 1920.00,106 V 359 H 0  V 67 Z">
+            <animate repeatCount="indefinite" fill="url(#grad1)" attributeName="d" dur="15s" attributeType="XML"
+              values="M0 77  C 473,283 822,-40 1920,116  V 359 H 0  V 67 Z; M0 77 C 473,-40 1222,283 1920,136  V 359 H 0 V 67 Z; M0 77 C 973,260 1722,-53 1920,120  V 359  H 0  V 67  Z; M0 77 C 473,283 822,-40 1920,116 V 359 H 0 V 67 Z">
+            </animate>
+          </path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="container-padrao text-center">
+      <div class="row">
+        <h1>Mural</h1>
+      </div>
+
+      <div class="row text-center mural-fotos">
+        <div class="col">
+          <div class="rect">
+            <img src="images/coleta.png">
+          </div>
+          <h2>Coleta</h2>
+        </div>
+        <div class="col">
+          <div class="rect rect2">
+            <img src="images/capoeira.png">
+          </div>
+          <h2>Capoeira</h2>
+        </div>
+        <div class="col">
+          <div class="rect">
+            <img src="images/doacoes.png">
+          </div>
+          <h2>Doações</h2>
+        </div>
+        <div class="col">
+          <div class="rect rect2">
+            <img src="images/cine.png">
+          </div>
+          <h2>Cine</h2>
+        </div>
+        <div class="col">
+          <div class="rect">
+            <img src="images/oficinas.png">
+          </div>
+          <h2>Oficina</h2>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="waves-container">
+      <div class="waves">
+        <svg width="100%" height="200px" fill="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#A8DCE6" />
+            <stop offset="50%" stop-color="#349A9C" />
+            <stop offset="100%" stop-color="#326466" />
+          </linearGradient>
+          <path fill="url(#grad1)" d="M0 67 C 273,183 822,-40 1920.00,106 V 359 H 0  V 67 Z">
+            <animate repeatCount="indefinite" fill="url(#grad1)" attributeName="d" dur="15s" attributeType="XML"
+              values="M0 77  C 473,283 822,-40 1920,116  V 359 H 0  V 67 Z; M0 77 C 473,-40 1222,283 1920,136  V 359 H 0 V 67 Z; M0 77 C 973,260 1722,-53 1920,120  V 359  H 0  V 67  Z; M0 77 C 473,283 822,-40 1920,116 V 359 H 0 V 67 Z">
+            </animate>
+          </path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="container-padrao footer text-center">
+      
+      <div class="row">
+        <div class="col">
+          <img class="logo-footer" src="images/velaumar_logo.jpg" alt="Logo Velaumar" width="150px" height="150px">
+        </div>
+        <div class="col redes">
+          <h2>Redes Sociais</h2>
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-facebook"
+            viewBox="0 0 16 16">
+            <path
+              d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-instagram"
+            viewBox="0 0 16 16">
+            <path
+              d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+          </svg>
+        </div>
+        <div class="col">
+          <h2>Redes de parceiros</h2>
+        </div>
+        <div class="col">
+          <h2>Links</h2>
+        </div>
+      </div>
+
+    </div>
+    </div>
+
+    <footer class=" text-center text-lg-start footer-text">
+      <!-- Copyright -->
+      <div class="text-center p-3">
+        © 2021 Copyright
+      </div>
+      <!-- Copyright -->
+    </footer>
 </body>
 
 </html>
