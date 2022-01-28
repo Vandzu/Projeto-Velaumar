@@ -24,28 +24,9 @@
     border-radius: 60px;
 }
 
-.botao2 {
-    background-color: #349A9C;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    display: inline-block;
-    font-size: 24px;
-    font-weight: bold;
-    border-radius: 60px;
-    text-decoration: none;
-    color: #fff;
-}
-
-.botao2:hover {
-    background-color: #2a7b7c;
-    color: #fff;
-}
-
 .botao:hover {
     background-color: #2a7b7c;
-    color: #fff;
+    color: antiquewhite;
 }
 
 .container-inicial {
@@ -67,7 +48,6 @@
 }
 
 .sobre p {
-    margin-top: 30px;
     padding-left: 68.5px;
     text-align: justify;
     text-justify: inter-word;
@@ -117,13 +97,15 @@
 
 
 
-.rect img{
+.rect {
+    background-color: black; 
     border-radius: 40px; 
     width: 150px; 
     height: 250px;
+    margin-left: 15%;
 }
 
-.rect2 img{
+.rect2 {
     margin-top: 100px;
 }
 

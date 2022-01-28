@@ -6,10 +6,9 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var adminDocsRouter = require('./routes/adminDocs');
+var adminAcoesRouter = require('./routes/adminAcoes');
 var docsRouter = require('./routes/docs');
-var sobreRouter = require('./routes/sobre');
 var acoesRouter = require('./routes/acoes');
-var doacoesRouter = require('./routes/doacoes');
 var eventsRouter = require('./routes/events');
 
 const cors = require('cors');
@@ -30,9 +29,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/adminDocs', adminDocsRouter);
 app.use('/docs', docsRouter);
-app.use('/sobre', sobreRouter);
 app.use('/acoes', acoesRouter);
-app.use('/doacoes', doacoesRouter);
+app.use('/adminAcoes', adminAcoesRouter);
 app.use('/events', eventsRouter);
 
 // catch 404 and forward to error handler

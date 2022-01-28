@@ -11,6 +11,13 @@ this.filters();
 
 connectFirebase() {
 const firebaseConfig = {
+    apiKey: "AIzaSyBtJ3R8DWl26qtCXDQvCO0TU3dC5FRjj8s",
+    authDomain: "velaumar-c0b81.firebaseapp.com",
+    databaseURL: "https://velaumar-c0b81-default-rtdb.firebaseio.com",
+    projectId: "velaumar-c0b81",
+    storageBucket: "velaumar-c0b81.appspot.com",
+    messagingSenderId: "12998876707",
+    appId: "1:12998876707:web:c1de580b4006454ecc5b96"
 };
 
 // Initialize Firebase
@@ -375,7 +382,7 @@ readFiles() {
         
 
         //paginate Archives
-    const numDocs = snapshot.numChildren()
+    const numDocs = snapshot.numChildren();
 
     let perPage = 8
     const state = {
@@ -677,8 +684,6 @@ readFiles() {
             }
         })
         .catch((error) => {
-        // A full list of error codes is available at
-        // https://firebase.google.com/docs/storage/web/handle-errors
         switch (error.code) {
             case 'storage/object-not-found':
             console.log('objeto não encontrado');

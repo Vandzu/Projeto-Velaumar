@@ -5,7 +5,7 @@ class ArchivesController {
 
     this.onselectionchange = new Event("selectionchange");
 
-    this.navEl = document.querySelector('#browse-location');
+    this.navEl = document.querySelector('#bread-list');
     this.btnSendFileEl = document.querySelector("#btn-send-file");
     this.inputFilesEl = document.querySelector("#files");
     this.snackModalEl = document.querySelector("#react-snackbar-root");
@@ -15,6 +15,7 @@ class ArchivesController {
     this.listFilesEl = document.querySelector("#list-of-files-and-directories");
 
     this.btnNewFolder = document.querySelector("#btn-new-folder");
+    this.btnOpen = document.querySelector("#btn-open");
     this.btnRename = document.querySelector("#btn-rename");
     this.btnDelete = document.querySelector("#btn-delete");
     this.btnCancelUpload = document.querySelector("#btn-cancel-upload");
@@ -31,6 +32,13 @@ class ArchivesController {
 
   connectFirebase() {
     const firebaseConfig = {
+      apiKey: "AIzaSyBtJ3R8DWl26qtCXDQvCO0TU3dC5FRjj8s",
+      authDomain: "velaumar-c0b81.firebaseapp.com",
+      databaseURL: "https://velaumar-c0b81-default-rtdb.firebaseio.com",
+      projectId: "velaumar-c0b81",
+      storageBucket: "velaumar-c0b81.appspot.com",
+      messagingSenderId: "12998876707",
+      appId: "1:12998876707:web:c1de580b4006454ecc5b96"
     };
   
     // Initialize Firebase
@@ -121,7 +129,9 @@ class ArchivesController {
 
   removeFile(ref, name) {
     let fileRef = firebase.storage().ref(ref).child(name);
+
     return fileRef.delete();
+      
   }
 
   initEvents() {
@@ -156,19 +166,106 @@ class ArchivesController {
         });
     });
 
+    this.btnOpen.addEventListener("click", (e)=>{
+      document.querySelector("#modal-file").innerHTML = '';
+      let li = this.getSelection()[0];
+      let file = JSON.parse(li.dataset.file);
+
+      var fileRef = this.storageRef.child('Velaumar/'+file.originName);
+
+        fileRef.getDownloadURL()
+        .then((url) => {
+        let xhr = new XMLHttpRequest();
+        xhr.responseType = 'blob';
+        xhr.onload = function(event) {
+            let a = document.createElement('a');
+            a.href = window.URL.createObjectURL(xhr.response);
+            a.download = file.name;
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.click();   
+            let blob = xhr.response;
+        };
+        xhr.open('GET', url);
+                        document.querySelector("#nome-file").innerHTML = file.name;
+
+                        switch(file.type){
+                            case 'application/pdf':
+                                let doc = document.createElement('embed');
+                                doc.setAttribute('src', url);
+                                doc.type = file.type;
+                                doc.width = '100%';
+                                doc.height = '100%';
+                                doc.className = 'doc-reveal';
+
+                                document.querySelector("#modal-file").appendChild(doc);
+                            break;
+
+                            case "image/jpeg":
+                            case "image/jpg":
+                            case "image/png":
+                            case "image/gif":
+                                let doc2 = document.createElement('img');
+                                doc2.setAttribute('src', url);
+                                document.querySelector("#modal-file").appendChild(doc2);
+                                doc2.className = 'doc-reveal';
+                            break;
+
+                            case "video/mp4":
+                            case "video/quicktime":
+                            case "video/mov":
+                                let doc3 = document.createElement('video');
+                                doc3.setAttribute('src', url);
+                                doc3.type = file.type;
+                                doc3.style.width = '100%';
+                                doc3.style.height = 'auto';
+                                doc3.controls = true;
+                                document.querySelector("#modal-file").appendChild(doc3);
+                                doc3.className = 'doc-reveal';
+                            break;
+                            case "application/vnd.oasis.opendocument.text":
+                                let doc4 = document.querySelector("#abrir"+key);
+                                doc4.href = url;
+                        }
+
+
+      })
+      .catch((error) => {
+      switch (error.code) {
+          case 'storage/object-not-found':
+          console.log('objeto não encontrado');
+          console.log(error);
+          break;
+          case 'storage/unauthorized':
+          console.log('usuário sem acesso');
+          console.log(error);
+          break;
+          case 'storage/canceled':
+          console.log('requisição cancelada');
+          console.log(error);
+          break;
+
+          // ...
+
+          case 'storage/unknown':
+          console.log('erro desconhecido');
+          console.log(error);
+          break;
+      }
+      });
+
+    })
+
     this.btnRename.addEventListener("click", (e) => {
       let li = this.getSelection()[0];
       let file = JSON.parse(li.dataset.file);
       let name = prompt("Renomear o arquivo:", file.name);
 
       if (name) {
-        let firstName = file.name;
+        let firstName = file.originName;
         file.name = name;
-        let fileRef = firebase.storage().ref(this.currentFolder.join('/')).child(file.name);
         let getRef = this.getFirebaseRef();
         let lidatakey = li.getAttribute('data-key');
-
-        getRef.child(lidatakey).remove();
 
         this.getFirebaseRef().push().set({
           name: file.name,
@@ -177,6 +274,18 @@ class ArchivesController {
           path: file.path,
           size: file.size
         });
+
+        getRef.child(lidatakey).remove();
+
+        setTimeout(()=>{
+          let docli = document.getElementsByName(file.name)[0];
+          console.log(docli)
+          docli.scrollIntoView();
+          docli.classList.add("selected");
+        }, 1000)
+
+        
+        
         
       }
     });
@@ -186,16 +295,19 @@ class ArchivesController {
         case 0:
           this.btnDelete.style.display = "none";
           this.btnRename.style.display = "none";
+          this.btnOpen.style.display = "none";
           break;
 
         case 1:
           this.btnDelete.style.display = "block";
           this.btnRename.style.display = "block";
+          this.btnOpen.style.display = "block";
           break;
 
         default:
           this.btnDelete.style.display = "block";
           this.btnRename.style.display = "none";
+          this.btnOpen.style.display = "none";
       }
     });
 
@@ -359,7 +471,7 @@ class ArchivesController {
     switch (file.type) {
       case "folder":
         return `
-        <svg width="160" height="160" viewBox="0 0 160 160" class="mc-icon-template-content tile__preview tile__preview--icon">
+        <svg width="110" height="110" viewBox="0 0 160 160" class="mc-icon-template-content tile__preview tile__preview--icon">
             <title>content-folder-large</title>
             <g fill="none" fill-rule="evenodd">
                 <path d="M77.955 53h50.04A3.002 3.002 0 0 1 131 56.007v58.988a4.008 4.008 0 0 1-4.003 4.005H39.003A4.002 4.002 0 0 1 35 114.995V45.99c0-2.206 1.79-3.99 3.997-3.99h26.002c1.666 0 3.667 1.166 4.49 2.605l3.341 5.848s1.281 2.544 5.12 2.544l.005.003z" fill="#71B9F4"></path>
@@ -370,7 +482,7 @@ class ArchivesController {
 
       case "application/pdf":
         return `
-          <svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="160px" height="160px" viewBox="0 0 160 160" enable-background="new 0 0 160 160" xml:space="preserve">
+          <svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="110px" height="110px" viewBox="0 0 160 160" enable-background="new 0 0 160 160" xml:space="preserve">
               <filter height="102%" width="101.4%" id="mc-content-unknown-large-a" filterUnits="objectBoundingBox" y="-.5%" x="-.7%">
                 <feOffset result="shadowOffsetOuter1" in="SourceAlpha" dy="1"></feOffset>
                 <feColorMatrix values="0 0 0 0 0.858823529 0 0 0 0 0.870588235 0 0 0 0 0.88627451 0 0 0 1 0" in="shadowOffsetOuter1">
@@ -408,7 +520,7 @@ class ArchivesController {
       case "audio/mp3":
       case "audio/ogg":
         return `
-        <svg width="160" height="160" viewBox="0 0 160 160" class="mc-icon-template-content tile__preview tile__preview--icon">
+        <svg width="110" height="110" viewBox="0 0 160 160" class="mc-icon-template-content tile__preview tile__preview--icon">
             <title>content-audio-large</title>
             <defs>
               <rect id="mc-content-audio-large-b" x="30" y="43" width="100" height="74" rx="4"></rect>
@@ -431,7 +543,7 @@ class ArchivesController {
       case "video/mp4":
       case "video/quicktime":
         return `
-          <svg width="160" height="160" viewBox="0 0 160 160" class="mc-icon-template-content tile__preview tile__preview--icon">
+          <svg width="110" height="110" viewBox="0 0 160 160" class="mc-icon-template-content tile__preview tile__preview--icon">
             <title>content-video-large</title>
             <defs>
               <rect id="mc-content-video-large-b" x="30" y="43" width="100" height="74" rx="4"></rect>
@@ -456,7 +568,7 @@ class ArchivesController {
       case "image/png":
       case "image/gif":
         return `
-          <svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="160px" height="160px" viewBox="0 0 160 160" enable-background="new 0 0 160 160" xml:space="preserve">
+          <svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="110px" height="110px" viewBox="0 0 160 160" enable-background="new 0 0 160 160" xml:space="preserve">
               <filter height="102%" width="101.4%" id="mc-content-unknown-large-a" filterUnits="objectBoundingBox" y="-.5%" x="-.7%">
                 <feOffset result="shadowOffsetOuter1" in="SourceAlpha" dy="1"></feOffset>
                 <feColorMatrix values="0 0 0 0 0.858823529 0 0 0 0 0.870588235 0 0 0 0 0.88627451 0 0 0 1 0" in="shadowOffsetOuter1">
@@ -499,7 +611,7 @@ class ArchivesController {
 
       default:
         return `
-          <svg width="160" height="160" viewBox="0 0 160 160" class="mc-icon-template-content tile__preview tile__preview--icon">
+          <svg width="110" height="110" viewBox="0 0 160 160" class="mc-icon-template-content tile__preview tile__preview--icon">
             <title>1357054_617b.jpg</title>
             <defs>
               <rect id="mc-content-unknown-large-b" x="43" y="30" width="74" height="100" rx="4"></rect>
@@ -565,38 +677,43 @@ class ArchivesController {
 
   renderNav() {
 
-    let nav = document.createElement('nav')
+    let nav = document.getElementById('bread-list');
     let path = [];
+
+    nav.innerHTML = "";
 
     for (let i = 0; i < this.currentFolder.length; i++) {
       let folderName= this.currentFolder[i];
-      let span = document.createElement('span');
+      let li = document.createElement('li');
 
       path.push(folderName);
 
       if ((i+1) === this.currentFolder.length) {
 
-        span.innerHTML = folderName;
-
+        li.innerHTML = folderName;
+        li.className = 'breadcrumb-item active';
+        li.ariaHidden = 'breadcrumb'
       } else {
-        span.className = 'breadcrumb-segment__wrapper'
-        span.innerHTML = `
-          <span class="ue-effect-container uee-BreadCrumbSegment-link-0">
-            <a href="#" data-path="${path.join('/')}" class="breadcrumb-segment">${folderName}</a>
-          </span>
-          <svg width="24" height="24" viewBox="0 0 24 24" class="mc-icon-template-stateless" style="top: 4px; position: relative;">
-            <title>arrow-right</title>
-            <path d="M10.414 7.05l4.95 4.95-4.95 4.95L9 15.534 12.536 12 9 8.464z" fill="#637282" fill-rule="evenodd"></path>
-          </svg>
+        li.className = 'breadcrumb-item active';
+
+        let pathName = `
+        <a href="#" data-path="${path.join('/')}">${folderName}</a>
+        <svg width="24" height="24" viewBox="0 0 24 24">
+        <title>arrow-right</title>
+        <path d="M10.414 7.05l4.95 4.95-4.95 4.95L9 15.534 12.536 12 9 8.464z" fill="#637282" fill-rule="evenodd"></path>
+      </svg>
         `
+        li.innerHTML = pathName;
       }
 
-      nav.appendChild(span);
+      console.log(folderName)
+
+      nav.appendChild(li);
     }
 
-    this.navEl.innerHTML = nav.innerHTML;
+    //this.navEl.innerHTML = nav.innerHTML;
 
-    this.navEl.querySelectorAll('a').forEach(a => {
+    nav.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', e => {
         e.preventDefault();
 
@@ -664,3 +781,5 @@ class ArchivesController {
     });
   }
 }
+
+window.app = new ArchivesController()

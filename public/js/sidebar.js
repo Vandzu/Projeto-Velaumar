@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     
     if(toggle && nav && bodypd && headerpd){
     toggle.addEventListener('click', ()=>{
-    nav.classList.toggle('show')
+    nav.classList.toggle('showsidebar')
     toggle.classList.toggle('bx-x')
     bodypd.classList.toggle('body-pd')
     headerpd.classList.toggle('body-pd')

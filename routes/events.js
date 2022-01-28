@@ -5,4 +5,5 @@ router.get("/", function (req, res, next){
     res.render('events');
 })
 
+
 module.exports = router

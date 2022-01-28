@@ -1,3 +1,7 @@
+body{
+    background-color: #ECECEC;
+}
+
 .bg-docs img{
     max-width: 98.7vw;
     margin-top: -35px;
@@ -17,16 +21,16 @@
     background-color: #A8DCE6;
 }
 
-.botao {
+.filters {
     background-color: #fff;
-    box-shadow: 0px 2px 4px grey;
+    box-shadow: 0px 4px 4px rgb(0, 0, 0, 25%);
     border: none;
     color: black;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    border-radius: 60px;
+    border-radius: 15px;
     white-space: nowrap !important;
     align-items: center;
 }
@@ -42,12 +46,13 @@
 }
 
 .arch {
-    box-shadow: 0px 2px 4px grey;
+    box-shadow: 0px 4px 4px rgb(0, 0, 0, 25%);
     border: none;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
     border-radius: 10px;
+    background-color: #fff;
 }
 
 .archives {
@@ -95,7 +100,7 @@
 .botao2 {
     font-weight: bold;
     background-color: grey;
-    box-shadow: 0px 2px 4px grey;
+    box-shadow: 0px 4px 4px rgb(0, 0, 0, 25%);
     border: none;
     color: white;
     padding: 5px;
@@ -108,7 +113,7 @@
 
 .botao3 {
     background-color: #349A9C;
-    box-shadow: 0px 2px 4px grey;
+    box-shadow: 0px 4px 4px rgb(0, 0, 0, 25%);
     border: none;
     color: white;
     padding: 5px 20px;
@@ -125,7 +130,7 @@
     font-weight: bold;
     margin-top: 5px;
     background-color: #349A9C;
-    box-shadow: 0px 2px 4px grey;
+    box-shadow: 0px 4px 4px rgb(0, 0, 0, 25%);
     border: none;
     color: white;
     padding: 5px 20px;
@@ -140,7 +145,7 @@
 .icon {
     margin-left:15px;
     margin-top: 0px;
-    box-shadow: 0px 2px 4px grey;
+    box-shadow: 0px 4px 4px rgb(0, 0, 0, 25%);
     border: none;
     background-color: #fff;
     padding: 5px 10px;
@@ -157,6 +162,10 @@
 
 .modal-footer{
     margin-top: 3%;
+}
+
+.controls div{
+    background-color: #fff;
 }
 
 #paginate {
@@ -209,7 +218,7 @@
 }
 
 .fx {
-    box-shadow: 0px 2px 4px grey;
+    box-shadow: 0px 4px 4px rgb(0, 0, 0, 25%);
     margin: 5px;
 }
 
