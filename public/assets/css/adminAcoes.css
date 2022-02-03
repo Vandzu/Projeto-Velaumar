@@ -96,10 +96,6 @@ body {
     margin: 10px;
 }
 
-.btn {
-    width: web;
-}
-
 .selected {
     background-color: #A8DCE6;
     color: #fff;

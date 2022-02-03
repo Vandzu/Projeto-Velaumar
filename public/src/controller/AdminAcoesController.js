@@ -13,7 +13,13 @@ class AdminAcoesController {
 
     connectFirebase() {
         const firebaseConfig = {
-
+            apiKey: "AIzaSyBtJ3R8DWl26qtCXDQvCO0TU3dC5FRjj8s",
+            authDomain: "velaumar-c0b81.firebaseapp.com",
+            databaseURL: "https://velaumar-c0b81-default-rtdb.firebaseio.com",
+            projectId: "velaumar-c0b81",
+            storageBucket: "velaumar-c0b81.appspot.com",
+            messagingSenderId: "12998876707",
+            appId: "1:12998876707:web:c1de580b4006454ecc5b96"
         };
         
         // Initialize Firebase
@@ -129,7 +135,6 @@ class AdminAcoesController {
         }
 
         uploadData(){
-            console.log('teste');
             const file = $('#acao-img').get(0).files[0];
             const metadata = {contentType: file.type};
             const task = firebase.storage().ref('Acoes/').child(document.querySelector('#name-acao').value).put(file, metadata);
@@ -197,7 +202,7 @@ class AdminAcoesController {
                     "hora": document.querySelector('#hora-acao').value,
                     "numero": document.querySelector('#numero-acao').value,
                     "rua": document.querySelector('#rua-acao').value,
-                    "bairro": document.querySelector('#bairro-acao').value,
+                    "bairro": document.querySelector('#bairro-acao').value
                 }).then(()=>{
                     console.log("Ação atualizada!");
                     $('#modal-open').modal('hide');

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+
+    <title>Administração de notícias</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link href="assets/css/adminNoticias.css" rel="stylesheet">
+    <link href="assets/css/sidebar.css" rel="stylesheet">
+</head>
+
+<body id="body-pd">
+    <%- include("inc/sidebar")-%>
+    <div class="container-fluid">
+        <div class="row">
+            <main role="main" class="col-xl-12 pt-3 px-4">
+                <section id="content-section">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <ul class="list-unstyled row" id="list-noticias">
+                                
+                            </ul>
+                        </div>
+                        <div class="col-md-3 right-buttons">
+                         
+                            <button id="btn-create-acao" type="button" data-bs-toggle="modal" data-bs-target="#modal-noticia" class="btn btn-actions btn-primary btn-block btn-sm row mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-plus" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5z"/>
+                                    <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"/>
+                                  </svg>
+                                Criar nova notícia
+                            </button>
+                            
+                            <button style="display: none;" id="btn-edit" type="button" class="btn btn-actions btn-info btn-block btn-sm row mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                  </svg>
+                                Visualizar
+                            </button>
+                            <button style="display: none;" id="btn-delete" data-bs-toggle="modal" data-bs-target="#modal-delete" type="button" class="btn btn-actions btn-danger btn-block btn-sm row mb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-minus" viewBox="0 0 16 16">
+                                    <path d="M5.5 9a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/>
+                                    <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+                                  </svg>
+                                Excluir
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+        
+    </div>
+
+    <div class="modal fade" id="modal-delete" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Tem certeza que deseja excluir essa notícia?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row justify-content-center">
+                    <button type="button" class="btn btn-apply btn-primary col-6" id="yes">Sim</button>
+                    <button type="button" class="btn btn-apply btn-danger col-6" data-bs-dismiss="modal">Não</button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="modal fade" id="modal-noticia" tabindex="-1" aria-labelledby="modal-noticia" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title title-acao">Criar notícia</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modal-noticia-body">
+                <div class="mb-3">
+                    <label for="titulo-create" class="form-label">Título da notícia</label>
+                    <input type="text" class="form-control col-6" id="titulo-create" required></input>
+                    <div class="invalid-feedback">
+                        Digite um título para a notícia
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="subtitulo-create" class="form-label">Subtítulo da notícia</label>
+                    <input type="text" class="form-control col-6" id="subtitulo-create" required></input>
+                    <div class="invalid-feedback">
+                        Digite um sub-título para a notícia
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Insira uma imagem de miniatura da notícia</label>
+                    <input class="form-control" type="file" accept="image/*" multiple id="noticia-img" required>
+                </div>
+                <div id="editor-container">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-alert test">Test</button>
+                <button type="submit" class="btn btn-primary salvar">
+                    <div class="spinner-border spinner-border-sm text-info" id="spinner-save-create" role="status" style="display: none">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <p>Postar notícia</p>
+                </button>
+              </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-visualizar" tabindex="-1" aria-labelledby="modal-visualizar" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title title-acao">Visualizar notícia</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modal-body-visualizar">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+              </div>
+        </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase.js"></script>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script type="module" src="src/controller/AdminNoticiasController.js"></script>
+    <script src="js/sidebar.js"></script>
+
+</body>
+
+</html>
