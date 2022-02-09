@@ -12,14 +12,19 @@ body{
     text-align: center!important;
 }
 
+.title-noticias h1 {
+    font-weight: bold;
+}
+
 .noticia {
     width: 90%;
-    margin: 30px auto;
+    margin: 10px 30px;
     background-color: #fff;
     border-radius: 10px;
     height: 150px;
     box-shadow: 0px 4px 4px rgb(0, 0, 0, 25%);
     width: 44%;
+    animation: reveal 0.3s linear;
 }
 
 .thumb {
@@ -39,6 +44,10 @@ body{
     display: inline-block;
 }
 
+.noticia:hover {
+    cursor: pointer;
+}
+
 .descricao {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -53,6 +62,7 @@ body{
     background-color: #fff;
     box-shadow: 0px 4px 4px rgb(0, 0, 0, 25%);
     border-radius: 10px;
+    animation: reveal2 0.3s linear;
 }
 
 .noticia-opened img {
@@ -61,4 +71,27 @@ body{
 
 .noticia-opened p {
     overflow-wrap: break-word;
+}
+
+@keyframes reveal {
+    0%{
+        opacity: 0;
+        margin-top: 40px;
+    }
+    100%{
+        opacity: 1;
+        margin-top: 30px;
+    }
+}
+
+
+@keyframes reveal2 {
+    0%{
+        opacity: 0;
+        margin-top: 10px;
+    }
+    100%{
+        opacity: 1;
+        margin-top: 0px;
+    }
 }

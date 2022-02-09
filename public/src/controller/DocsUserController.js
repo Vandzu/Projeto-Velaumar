@@ -1,27 +1,11 @@
 class DocsUserController {
 constructor(){
-this.currentFolder = ['Velaumar'];
+this.currentFolder = ['Arquivos'];
 this.listFilesEl = document.querySelector(".archives");
-this.connectFirebase();
 this.readFiles();
 this.storage = firebase.storage();
 this.storageRef = this.storage.ref();
 this.filters();
-}
-
-connectFirebase() {
-const firebaseConfig = {
-    apiKey: "AIzaSyBtJ3R8DWl26qtCXDQvCO0TU3dC5FRjj8s",
-    authDomain: "velaumar-c0b81.firebaseapp.com",
-    databaseURL: "https://velaumar-c0b81-default-rtdb.firebaseio.com",
-    projectId: "velaumar-c0b81",
-    storageBucket: "velaumar-c0b81.appspot.com",
-    messagingSenderId: "12998876707",
-    appId: "1:12998876707:web:c1de580b4006454ecc5b96"
-};
-
-// Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
 }
 
 getFirebaseRef(path) {
@@ -555,7 +539,7 @@ readFiles() {
         let data = snapshotItem.val();
 
         //pegando url do arquivo
-        var starsRef = this.storageRef.child('Velaumar/'+data.originName);
+        var starsRef = this.storageRef.child('Arquivos/'+data.originName);
 
         starsRef.getDownloadURL()
         .then((url) => {

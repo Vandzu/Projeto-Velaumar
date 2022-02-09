@@ -1,6 +1,5 @@
 class AdminNoticiasController {
     constructor(){
-        this.connectFirebase();
         const database = firebase.firestore();
         this.firestore = database;
         this.collectionRef = this.firestore.collection('Noticias');
@@ -11,21 +10,6 @@ class AdminNoticiasController {
         this.visualizarNoticia();
         this.deleteNoticia();
     }
-
-    connectFirebase() {
-      const firebaseConfig = {
-          apiKey: "AIzaSyBtJ3R8DWl26qtCXDQvCO0TU3dC5FRjj8s",
-          authDomain: "velaumar-c0b81.firebaseapp.com",
-          databaseURL: "https://velaumar-c0b81-default-rtdb.firebaseio.com",
-          projectId: "velaumar-c0b81",
-          storageBucket: "velaumar-c0b81.appspot.com",
-          messagingSenderId: "12998876707",
-          appId: "1:12998876707:web:c1de580b4006454ecc5b96"
-      };
-      
-      // Initialize Firebase
-      const app = firebase.initializeApp(firebaseConfig);
-      }
 
     initEditor(){
       let quill_create = new Quill('#editor-container', {
@@ -47,11 +31,22 @@ class AdminNoticiasController {
       })
     }
 
+    eraseFields(quill){
+      document.getElementById('titulo-create').value = '';
+      document.getElementById('subtitulo-create').value = '';
+      document.getElementById('noticia-img').value = '';
+      quill.root.innerHTML = '';
+    }
+
     saveNoticia(delta, quill){
       let idimg = 0;
       let countImgs = 0;
       let countImgs2 = 0;
       let imgRef = document.querySelector('#titulo-create').value;
+
+      $('#spinner-save-create').show();
+      $('.salvar p').html("Postando");
+      $('.salvar').prop("disabled", true);
 
       for (let j = 0; j < delta.ops.length; j++) {
         if(delta.ops[j].insert.image){
@@ -68,23 +63,18 @@ class AdminNoticiasController {
             task
             .then(snapshot => snapshot.ref.getDownloadURL())
             .then((url) => {
-              $('#spinner-save-create').show();
-              $('.salvar p').html("Postando");
-              $('.salvar').prop("disabled", true);
-
               for (let i = 0; i < delta.ops.length; i++) {
                 if(delta.ops[i].insert.image){
                   idimg++;
                   
                   let imgbase64 = delta.ops[i].insert.image;
-                  let stringsliced = imgbase64.slice(23);
-                  console.log(stringsliced);
+                  let verifyformat = imgbase64.substring(0, 23);
         
-                  if(stringsliced.includes("jpeg")){
+                  if(verifyformat.includes("jpeg")){
                     var img = imgbase64.slice(23);
                     console.log('its jpeg');
                     var typeimg = {contentType:'image/jpg'}
-                  } else if(stringsliced.includes("png")){
+                  } else if(verifyformat.includes("png")){
                     var img = imgbase64.slice(22);
                     console.log('its png');
                     var typeimg = {contentType:'image/png'}
@@ -129,6 +119,7 @@ class AdminNoticiasController {
                               $('#spinner-save-create').hide();
                               $('.salvar p').html("Postar notícia");  
                               this.getNoticias();
+                              this.eraseFields();
                           })
                           .catch((error) => {
                               console.error("Error adding document: ", error);
@@ -153,10 +144,6 @@ class AdminNoticiasController {
                 quill.setContents(delta);
                 let content = quill.root.innerHTML;
 
-                $('#spinner-save-create').show();
-                $('.salvar p').html("Postando");
-                $('.salvar').prop("disabled", true);
-
                 this.collectionRef.add({
                   "titulo": document.querySelector('#titulo-create').value,
                   "subtitulo": document.querySelector('#subtitulo-create').value,
@@ -170,6 +157,7 @@ class AdminNoticiasController {
                       $('#spinner-save-create').hide();
                       $('.salvar p').html("Postar notícia");  
                       this.getNoticias();
+                      this.eraseFields();
                   })
                   .catch((error) => {
                       console.error("Error adding document: ", error);

@@ -1,0 +1,26 @@
+body {
+    background-image: url("../../images/login.png");
+}
+
+.login {
+    height: 100vh;
+    width: auto;
+}
+
+.login-modal{
+    width: 553px;   
+    height: 396px;
+    background-color: #fff;
+    border-radius: 20px 20px 0px 0px;
+    margin: 14% auto;
+    padding:40px;
+}
+
+.entrar{
+    background-color: #349A9C;
+    color: #fff;
+    margin: 0px auto;
+    font-weight: bold;
+    border-radius: 30px;
+    width: 25%;
+}

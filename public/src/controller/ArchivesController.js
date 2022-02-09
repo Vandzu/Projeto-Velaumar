@@ -1,7 +1,7 @@
 class ArchivesController {
   constructor() {
 
-    this.currentFolder = ['Velaumar'];
+    this.currentFolder = ['Arquivos'];
 
     this.onselectionchange = new Event("selectionchange");
 
@@ -18,31 +18,12 @@ class ArchivesController {
     this.btnOpen = document.querySelector("#btn-open");
     this.btnRename = document.querySelector("#btn-rename");
     this.btnDelete = document.querySelector("#btn-delete");
-    this.btnCancelUpload = document.querySelector("#btn-cancel-upload");
-    this.toastCancelUpload = document.querySelector("#cancel-upload-toast");
 
-    this.connectFirebase();
     this.storage = firebase.storage();
     this.storageRef = this.storage.ref();
     this.initEvents();
 
     this.openFolder();
-    this.cancelUpload();
-  }
-
-  connectFirebase() {
-    const firebaseConfig = {
-      apiKey: "AIzaSyBtJ3R8DWl26qtCXDQvCO0TU3dC5FRjj8s",
-      authDomain: "velaumar-c0b81.firebaseapp.com",
-      databaseURL: "https://velaumar-c0b81-default-rtdb.firebaseio.com",
-      projectId: "velaumar-c0b81",
-      storageBucket: "velaumar-c0b81.appspot.com",
-      messagingSenderId: "12998876707",
-      appId: "1:12998876707:web:c1de580b4006454ecc5b96"
-    };
-  
-    // Initialize Firebase
-    const app = firebase.initializeApp(firebaseConfig);
   }
 
   getSelection() {
@@ -158,7 +139,6 @@ class ArchivesController {
             }
           })
 
-          console.log("responses");
         })
         .catch((err) => {
           console.log(err);
@@ -170,7 +150,7 @@ class ArchivesController {
       let li = this.getSelection()[0];
       let file = JSON.parse(li.dataset.file);
 
-      var fileRef = this.storageRef.child('Velaumar/'+file.originName);
+      var fileRef = this.storageRef.child('Arquivos/'+file.originName);
 
         fileRef.getDownloadURL()
         .then((url) => {
@@ -278,7 +258,6 @@ class ArchivesController {
 
         setTimeout(()=>{
           let docli = document.getElementsByName(file.name)[0];
-          console.log(docli)
           docli.scrollIntoView();
           docli.classList.add("selected");
         }, 1000)
@@ -385,17 +364,6 @@ class ArchivesController {
       onloadstart();
 
       ajax.send(formData);
-    });
-  }
-
-  cancelUpload(){
-    this.btnCancelUpload.addEventListener('click', e=>{
-      e.preventDefault();
-      this.modalShow(false);
-      this.inputFilesEl.value = "";
-      this.btnSendFileEl.disabled = false;
-      $('#cancel-upload-toast').toast('show');
-      console.log("arquivo cancelado");
     });
   }
 
@@ -704,8 +672,6 @@ class ArchivesController {
         `
         li.innerHTML = pathName;
       }
-
-      console.log(folderName)
 
       nav.appendChild(li);
     }

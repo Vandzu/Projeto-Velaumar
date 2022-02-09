@@ -1,9 +1,16 @@
-
-
 .jumbotron {
     background: rgba(53, 103, 104, 0.8);
     height: 100vh;
     padding-top: 200px;
+}
+
+h3, h2, h1 {
+    font-weight: bold;
+    color: black;
+}
+
+.first-title {
+    color: #fff;
 }
 
 .container-padrao {
@@ -45,6 +52,11 @@
 
 .container-inicial p {
     font-size: 2rem;
+}
+
+.profs li {
+    list-style-type: none;
+    text-align: justify;
 }
 
 .sobre p {
@@ -95,14 +107,16 @@
     transform: rotate(15deg);
 }
 
-
-
 .rect {
-    background-color: black; 
-    border-radius: 40px; 
-    width: 150px; 
-    height: 250px;
-    margin-left: 15%;
+    border-radius: 70px;
+    width: 180px; 
+    height: 235px;
+    margin: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    object-fit: contain;
+    box-shadow: 0px 4px 4px rgb(0, 0, 0, 25%);
 }
 
 .rect2 {
@@ -110,7 +124,7 @@
 }
 
 .mural-fotos {
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .mural-fotos div h2 {
@@ -132,12 +146,12 @@
     color: azure;
 }
 
-.redes svg{
-    margin: 0px 10px;
+.footer .row .col h3 {
+    color: #fff;
 }
 
-.waves-container{
-    
+.redes svg{
+    margin: 0px 10px;
 }
 
 div.waves{

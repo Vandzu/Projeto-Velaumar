@@ -2,6 +2,154 @@ body {
     background-color: #ECECEC;;
 }
 
+
+#react-snackbar-root .mc-snackbar-holder-backdrop {
+  background: none;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+.mc-snackbar-holder-backdrop {
+  position: fixed;
+  display: inline-block;
+  bottom: 0;
+  width: 100%;
+  height: 200px;
+  padding-left: 20px;
+  padding-right: 20px;
+  z-index: 12;
+  pointer-events: none;
+  -webkit-animation: backgroundfade 0.2s linear;
+  animation: backgroundfade 0.2s linear;
+}
+
+#react-snackbar-root .mc-snackbar {
+  height: auto;
+  position: relative;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 0;
+  -webkit-animation: alt-snackbarload 0.25s cubic-bezier(0.2, 0, 0.5, 1.5);
+  animation: alt-snackbarload 0.25s cubic-bezier(0.2, 0, 0.5, 1.5);
+}
+.mc-snackbar-holder-backdrop .mc-snackbar {
+  margin-top: 132px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mc-snackbar {
+  box-sizing: border-box;
+  margin-bottom: 24px;
+  height: 44px;
+  background-color: #f7f9fa;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px rgb(99 114 130 / 16%), 0 8px 16px rgb(27 39 51 / 8%);
+  font-size: 14px;
+  font-weight: 400;
+  color: #1b2733;
+  -webkit-animation: snackbarload 0.15s cubic-bezier(0.2, 0, 0.5, 1.7);
+  animation: snackbarload 0.15s cubic-bezier(0.2, 0, 0.5, 1.7);
+  pointer-events: all;
+  max-width: 600px;
+  min-width: 400px;
+}
+
+#react-snackbar-root .mc-snackbar-container {
+  -webkit-box-align: normal;
+  -ms-flex-align: normal;
+  align-items: normal;
+}
+
+.mc-snackbar-container--snackbar-icon {
+  padding-left: 8px;
+}
+.mc-snackbar-container {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 24px;
+}
+
+.mc-progress-bar-bg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0px 0px 4px 4px;
+  width: 100%;
+  margin-top: -4px;
+  background-color: #d6e8fa;
+  height: 4px;
+}
+
+#react-snackbar-root .mc-progress-bar-fg {
+  -webkit-transition: none;
+  transition: none;
+}
+
+.mc-progress-bar-fg {
+  width: 0%;
+  height: 4px;
+  border-radius: 0px 4px 4px 8px;
+  background-color: #0070e0;
+  transition: all linear 1s; 
+}
+
+.mc-snackbar-title {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+}
+
+.mc-snackbar-title {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin: 0 0 0 0;
+  padding: 11px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#react-snackbar-root .mc-snackbar-icon svg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+}
+
+.mc-snackbar-icon svg {
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+.mc-icon-template-status-rotating {
+  -webkit-animation: rotate 3s linear infinite;
+  animation: rotate 3s linear infinite;
+}
+
 #content-section {
     clear: both;
 }
@@ -87,7 +235,8 @@ body {
 
 
 #modal-file img {
-  width: 100%;
+  width: auto;
+  max-height: 75vh;
 }
 
 #bread-list {
@@ -96,7 +245,7 @@ body {
 .search {
   width: 100%;
   position: relative;
-  display: flex;
+  display: none;
 }
 
 .searchTerm {

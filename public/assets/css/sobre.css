@@ -1,0 +1,28 @@
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.bg-sobre img{
+    max-width: 98.7vw;
+    margin-top: -35px;
+}
+
+.title-sobre {
+    width:auto;
+}
+
+.title-sobre h1 {
+    padding: 5% 0 10px 0;
+    color: black;
+    font-weight: bold;
+}
+
+.title-sobre p {
+    padding: 0 10%;
+    text-align: justify;
+}
+
+iframe {
+    margin: 0 27%;
+    border-radius: 20px;
+}

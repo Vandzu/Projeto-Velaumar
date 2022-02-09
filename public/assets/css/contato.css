@@ -1,0 +1,38 @@
+body {
+    background-image: url("../../images/bg1.png");
+}
+
+.container {
+    margin: 12% auto;
+}
+
+.entre-contato {
+    font-weight: bold;
+    color: #fff;
+}
+
+.enviar{
+    background-color: #349A9C;
+    color: #fff;
+    margin: 0px auto;
+    font-weight: bold;
+    border-radius: 10px;
+    width: 25%;
+}
+
+.row svg {
+    width: auto;
+}
+
+.row h3 {
+    width: auto;
+    color: #fff;
+    margin: auto 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.row a {
+    display: inherit;
+    text-decoration: none;
+}

@@ -34,7 +34,6 @@ a {
     left: 0;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 0 1rem;
     background-color: rgb(5, 119, 128);
     z-index: var(--z-fixed);
@@ -143,7 +142,13 @@ a {
     height: 100vh
 }
 
+.nav_list a {
+    color: #fff;
+}
 
+.logout {
+    margin-left: 50px;
+}
 
 @media screen and (min-width: 768px) {
     body {
@@ -180,4 +185,12 @@ a {
 
 .dropdown-toggle::after {
     margin-left: 0
+}
+
+.links {
+    margin-left: 40px;
+}
+
+.links a {
+    color: #fff;
 }

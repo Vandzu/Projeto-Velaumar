@@ -102,12 +102,6 @@
                         </svg>
                     </div>
                     <p class="mc-snackbar-title">Enviando o arquivo <span class="filename">file.pdf</span> - <span class="timeleft">8 min</span> restantes</p>
-                    <button type="button" id="btn-cancel-upload">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                          </svg>
-                    </button>
                 </div>
                 <div class="mc-progress-bar-bg">
                     <div class="mc-progress-bar-fg" style="width: 0%;"></div>
@@ -121,31 +115,18 @@
         <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="nome-file">Modal title</h5>
+            <h5 class="modal-title" id="nome-file"></h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body" id="modal-file">
+            <div class="modal-body text-center" id="modal-file">
             </div>
         </div>
         </div>
     </div>
 
-    <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center" style="min-height: 200px;">
-        <div class="toast" id="cancel-upload-toast" role="alert" aria-live="assertive" aria-atomic="true">
-          <div class="toast-header">
-            <strong class="mr-auto">Aviso</strong>
-            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="toast-body">
-            O envio do arquivo foi cancelado
-          </div>
-        </div>
-      </div>
-
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
-    <script src="src/controller/ArchivesController.js"></script>
+    <script type="module" src="src/db.js"></script>
+    <script type="module" src="src/controller/ArchivesController.js"></script>
     <script src="js/sidebar.js"></script>
     
     

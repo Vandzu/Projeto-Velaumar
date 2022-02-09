@@ -75,7 +75,7 @@ body {
 .selected {
     background-color: #A8DCE6 !important;
     color: #fff;
-  }
+}
 
 #editor-container {
     height: 375px;
@@ -92,6 +92,6 @@ body {
     }
     100%{
         opacity: 1;
-        margin-top: 0px;
+        margin-top: 10px;
     }
 }

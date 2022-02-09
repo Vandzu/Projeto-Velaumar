@@ -1,25 +1,9 @@
 class AcoesController {
     constructor(){
-        this.connectFirebase();
         const database = firebase.firestore();
         this.firestore = database;
         this.getAcoes();
     }
-
-    connectFirebase() {
-        const firebaseConfig = {
-            apiKey: "AIzaSyBtJ3R8DWl26qtCXDQvCO0TU3dC5FRjj8s",
-            authDomain: "velaumar-c0b81.firebaseapp.com",
-            databaseURL: "https://velaumar-c0b81-default-rtdb.firebaseio.com",
-            projectId: "velaumar-c0b81",
-            storageBucket: "velaumar-c0b81.appspot.com",
-            messagingSenderId: "12998876707",
-            appId: "1:12998876707:web:c1de580b4006454ecc5b96"
-        };
-        
-        // Initialize Firebase
-        const app = firebase.initializeApp(firebaseConfig);
-        }
 
         createAcoes(acao) {
             let li = document.createElement('li');
@@ -60,11 +44,9 @@ class AcoesController {
                 })
 
                 document.querySelector('.confirmar').addEventListener('click', e=>{
-                    window.open(`https://api.whatsapp.com/send?phone=558585794849&text=Olá,+meu+nome+é+{nome+do+usuário},+estou+interessado+em+me+voluntariar+para+a+ação+${document.querySelector('.modal-title').innerHTML}`, "Confirmar voluntariado", "left=100,top=100,width=600px,height=600px")
+                    window.open(`https://api.whatsapp.com/send?phone=558585794849&text=Olá,+estou+interessado+em+me+voluntariar+para+a+ação+${document.querySelector('.modal-title').innerHTML}`, "Confirmar voluntariado", "left=100,top=100,width=600px,height=600px")
                 })
-            }
-
-                
+            }                
         }
 
         getAcoes(){
