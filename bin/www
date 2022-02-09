@@ -87,4 +87,5 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
+  console.log('Servidor rodando na porta 3000, para acessar a aplicação basta digitar na url do navegador localhost:3000');
 }
