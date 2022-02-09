@@ -31,8 +31,8 @@ Cód. RF0019 | Remover elemento do ambiente. | Arquivo "public/src/controller/Ar
 Cód. RF0020 | Renomear elemento | Arquivo "public/src/controller/ArchivesController.js" - Linha 238 a 269
 Cód. RF0021 | Inserir diretório para elementos. | Arquivo "public/src/controller/ArchivesController.js" - Linha 119 a 129
 Cód. RF0022 | Mostrar ações sociais do voluntariado  | Arquivo "views/acoes.ejs" - Linha 1 a 65
-Cód. RF0023 | Selecionar ação ativa  | NÃO INICIADO
-Cód. RF0024 | Cancelar da ação  | NÃO INICIADO
+Cód. RF0023 | Selecionar ação ativa  | Arquivo "public/src/controller/AdminAcoesController.js" - Linha 49 a 82
+Cód. RF0024 | Cancelar da ação  | Arquivo "public/src/controller/AdminAcoesController.js" - Linha 166 a 212
 Cód. RF0025 | Mostrar quem se candidatou como voluntário  | NÃO INICIADO
 Cód. RF0026 | Mostrar produtos disponíveis para doação   | Arquivo "views/doacoes.ejs" - Linha 1 a 67
 Cód. RF0027 | Inserir novo produto | Arquivo "public/src/controller/AdminDoacoesController.js" - Linha 201 a 252
