@@ -1,9 +1,4 @@
-Nome da equipe: Velaumar Ecotech
-Nome dos integrantes: Francisco Gabriel, Maria Gabriela, Vanderson Lima, Thays Lunes, João Victor Martins
-
-Descrição do projeto:
-O site a ser desenvolvido para a ONG Velaumar visa incorporar a sua visibilidade no meio digital, de uma forma que os Administradores da página terão controle para gerenciar as ações sociais, eventos, notícias, doações e documentos produzidos pela ong. Além de trazer para o usuário um ambiente que contenha a personalidade da instituição, sensibilizando-o a poder contribuir de alguma maneira para que mais pessoas sejam alcançadas por suas ações.
-
+O projeto desenvolvido para a ONG Velaumar visa incorporar a sua visibilidade no meio digital, de uma forma que os Administradores da página terão controle para gerenciar as ações sociais, eventos, notícias, doações e documentos produzidos pela ong. Além de trazer para o usuário um ambiente que contenha a personalidade da instituição, sensibilizando-o a poder contribuir de alguma maneira para que mais pessoas sejam alcançadas por suas ações.
 
 Requisito Funcional | Descrição | Codificação
 --- | --- | --- 
@@ -41,6 +36,10 @@ Cód. RF0031 | Remover notícia  | Arquivo "public/src/controller/AdminNoticiasC
 Cód. RF0032 | Remover comentário ofensivo  | NÃO INICIADO
 Cód. RF0033 | Mostrar o calendário  | Arquivo "views/events.ejs" - Linha 1 a 34
 Cód. RF0034 | Marcar com cor verde dias com ações sociais próximas  | NÃO INICIADO
+
+https://youtu.be/s6RSp2GXQjo
+
+Vídeo de demonstração da aplicação desenvolvida
 
 ![image](https://user-images.githubusercontent.com/65266125/230937329-f4684584-0bce-42cf-9feb-38d20fa1529c.png)
 ![image](https://user-images.githubusercontent.com/65266125/230937949-94754766-a62c-48fe-98e2-af5cefab0f21.png)
